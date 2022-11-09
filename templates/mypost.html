@@ -1,0 +1,54 @@
+{% extends 'navBar.html' %}
+
+{% block style %}
+ 
+  
+  /* Set a style for all buttons */
+  a.up,a.de {
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    
+  }
+  
+  /* Add a hover effect for buttons */
+  a.de:hover,a.up:hover {
+    opacity: 0.8;
+  }
+  
+
+  /* Add padding to containers */
+  .container {
+    margin-top:5%;
+    margin-bottom:5%;
+    margin-left:25%;
+    margin-right:25%;
+  }
+.title{
+    margin-right: 5px;
+}
+{% endblock style %}
+
+
+{% block navBar %}
+
+    <div class="container">
+
+        <h1>My Post</h1>  
+        {% for x in posts %}
+        <ul style="background-color:white"> 
+            <li><h2 class="title">{{ x.tital }}</h2></li>
+            <li> <a class="up" href="{% url 'up'  x.id %}" style="background-color: #04AA6D"> Update </a> </li>
+            <li> <a class="de" href="{% url 'del' x.id %}" style="background-color: #FF0000">Delete </a> </li>
+        </ul>
+        {% endfor %}
+
+    </div>
+
+
+{% endblock navBar %}
+
+
+
