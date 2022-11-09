@@ -23,3 +23,5 @@ OR
 
 >.\myenv\Scripts\activate
 
+To runserver
+>python manage.py runserver
