@@ -33,8 +33,7 @@ def loggin(request):
             pass1 = request.POST['psw']
             user = authenticate(username=username, password=pass1)
 
-            if user is not None: 
-                print(user)   
+            if user is not None:   
                 login(request, user)
                 return redirect('/')
             else:
@@ -66,7 +65,7 @@ def newpost(request):
             # print(request.user.id,title,des)
             post= models.post(uid=request.user,tital=title,des=des)
             post.save()
-
+            return redirect('/mypost')
         return render(request, "newpost.html")
     else:
         return redirect('/')
@@ -85,6 +84,7 @@ def update(request, idup):
                 post.tital=request.POST['btitle']
                 post.des=request.POST['des']
                 post.save()
+                return redirect('/mypost')
             return render(request,"update.html",context)
 
         else:
