@@ -73,7 +73,6 @@ def newpost(request):
 def update(request, idup):
     if request.user.is_authenticated:
         post=models.post.objects.get(id=idup,uid=request.user)
-        print(post)
         if post is not None:
 
             context={
