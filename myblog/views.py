@@ -62,9 +62,14 @@ def newpost(request):
         if request.method=="POST":
             title=request.POST['btitle']
             des=request.POST['des']
+            pic=request.FILES['img']
             # print(request.user.id,title,des)
-            post= models.post(uid=request.user,tital=title,des=des)
-            post.save()
+            if pic is None:
+                post= models.post(uid=request.user,tital=title,des=des)
+                post.save()
+            else :
+                post= models.post(uid=request.user,tital=title,des=des,pic=pic)                
+                post.save()
             return redirect('/mypost')
         return render(request, "newpost.html")
     else:
@@ -82,6 +87,9 @@ def update(request, idup):
             if request.method=='POST':
                 post.tital=request.POST['btitle']
                 post.des=request.POST['des']
+                pic=request.FILES['img']
+                if pic is not None:
+                    post.pic=pic
                 post.save()
                 return redirect('/mypost')
             return render(request,"update.html",context)

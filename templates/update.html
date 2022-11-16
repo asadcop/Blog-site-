@@ -58,8 +58,8 @@
 
 {% block navBar %}
 
-<form method="POST">
-    {% csrf_token %}
+<form method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
 
     <div class="container">
       <h1>New Post</h1>  
@@ -68,7 +68,8 @@
   
       <label for="des"><b>Give the Post Description</b></label>
       <textarea type="text" placeholder="Enter Description" name="des">{{ post.des }}</textarea>
-  
+      <label for="img"><b>Blog Pic</b></label><br>
+      <input type="file" id="img" placeholder="Enter Image" name="img" accept="image/*" >
       <button type="submit">Update</button>
     </div>
 
